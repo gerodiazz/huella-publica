@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/*
+ * Tokens de diseño de Huella Pública (etapa 1, ajustables).
+ * Contrastes WCAG medidos y documentados en docs/DESIGN_SYSTEM.md.
+ */
+@theme {
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Fondos y superficies */
+  --color-cream: #fbf8f3;
+  --color-beige-100: #f2ebe0;
+  --color-beige-200: #e6dccd;
+  --color-lavender-50: #f6f3fa;
+  --color-lavender-100: #ece6f4;
+  --color-lavender-200: #ddd3ec;
+  --color-lavender-300: #c9bde0;
+
+  /* Texto y acento */
+  --color-ink: #2a2531;
+  --color-ink-muted: #5d5666;
+  --color-violet-700: #5a4785;
+  --color-violet-800: #463768;
+  --color-line-strong: #8e869a;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-source-sans), "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-ink;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    @apply text-violet-700 underline decoration-lavender-300 underline-offset-4 transition-colors;
+  }
+
+  a:hover {
+    @apply text-violet-800 decoration-violet-700;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-violet-700);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    @apply bg-lavender-200 text-ink;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
